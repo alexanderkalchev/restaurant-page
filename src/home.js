@@ -7,6 +7,7 @@ export function loadHomePage(contentDiv){
     p.innerText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nihilassumenda aliquam itaque accusamus sint expedita dolorum natus ut nammaiores ipsum velit, quia dolor. Fugiat voluptatibus temporibus oditeius."
     const button = document.createElement("button");
     button.innerText = "Explore our menu"
+    button.classList.add("menu-button")
     container.append(h1);
     container.append(p);
     container.append(button);

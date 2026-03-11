@@ -138,7 +138,7 @@ const beverages = [
   }
 ];
 
-export function loadMenuPage(contentDiv){
+export function loadMenuPage(contentDiv, option){
     const container = document.createElement("div");
     container.classList.add("menu");
 
@@ -146,105 +146,141 @@ export function loadMenuPage(contentDiv){
     const sidebar = document.createElement("div");
     sidebar.classList.add("sidebar");
     const h1 = document.createElement("button");
-    h1.innerText = "STARTERS"
+    h1.innerText = "SALADS"
+    h1.classList.add("salads-button");
     const h2 = document.createElement("button");
     h2.innerText = "MAINS"
+    h2.classList.add("mains-button");
     const h3 = document.createElement("button");
     h3.innerText = "PLATTERS"
+    h3.classList.add("platters-button");
     const h4 = document.createElement("button");
     h4.innerText = "DESSERT"
+    h4.classList.add("desserts-button");
     const h5 = document.createElement("button");
     h5.innerText = "BEVERAGES"
-    sidebar.append(h1, h2, h3, h4, h5);
+    h5.classList.add("beverages-button");
+    const h6 = document.createElement("button");
+    h6.innerText = "ALL";
+    h6.classList.add("all-button");
+    sidebar.append(h1, h2, h3, h4, h5, h6);
+   
+
     //SIDEBAR
 
     const main = document.createElement("div");
     main.classList.add("main")
 
-    const sectionA = document.createElement("section");
-    const sectionAHeader = document.createElement("h3");
-    sectionAHeader.innerText = "Salads"
-    sectionA.append(sectionAHeader)
-    for (const salad of salads) {
-        const element = document.createElement("div");
-        const name = document.createElement("h4");
-        name.innerText = salad["name"];
-        const desc = document.createElement("p");
-        desc.innerText = salad["desc"];
-        const price = document.createElement("h4"); 
-        price.innerText = salad["price"];
-        element.append(name, desc, price);
-        sectionA.append(element);
+    if(option === "ALL" || option === "SALADS"){
+        const sectionA = document.createElement("section");
+        const sectionAHeader = document.createElement("h3");
+        sectionAHeader.innerText = "Salads"
+        sectionA.append(sectionAHeader)
+        for (const salad of salads) {
+            const element = document.createElement("div");
+            const name = document.createElement("h4");
+            name.innerText = salad["name"];
+            const desc = document.createElement("p");
+            desc.innerText = salad["desc"];
+            const price = document.createElement("h4"); 
+            price.innerText = salad["price"];
+            const text = document.createElement("div");
+            text.classList.add("text");
+            text.append(name, desc);
+            element.append(text, price);
+            sectionA.append(element);
+        }
+        main.append(sectionA);
     }
-    main.append(sectionA);
 
-    const sectionB = document.createElement("section");
-    const sectionBHeader = document.createElement("h3");
-    sectionBHeader.innerText = "Mains"
-    sectionB.append(sectionBHeader)
-    for (const main of mains) {
-        const element = document.createElement("div");
-        const name = document.createElement("h4");
-        name.innerText = main["name"];
-        const desc = document.createElement("p");
-        desc.innerText = main["desc"];
-        const price = document.createElement("h4"); 
-        price.innerText = main["price"];
-        element.append(name, desc, price);
-        sectionB.append(element);
+    if(option === "ALL" || option === "MAINS"){
+        const sectionB = document.createElement("section");
+        const sectionBHeader = document.createElement("h3");
+        sectionBHeader.innerText = "Mains"
+        sectionB.append(sectionBHeader)
+        for (const main of mains) {
+            const element = document.createElement("div");
+            const name = document.createElement("h4");
+            name.innerText = main["name"];
+            const desc = document.createElement("p");
+            desc.innerText = main["desc"];
+            const price = document.createElement("h4"); 
+            price.innerText = main["price"];
+            const text = document.createElement("div");
+            text.classList.add("text");
+            text.append(name, desc);
+            element.append(text, price);
+            sectionB.append(element);
+        }
+        main.append(sectionB);
     }
-    main.append(sectionB);
+    
+    if(option === "ALL" || option === "PLATTERS"){
+        const sectionC = document.createElement("section");
+        const sectionCHeader = document.createElement("h3");
+        sectionCHeader.innerText = "Platters"
+        sectionC.append(sectionCHeader)
+        for (const platter of platters) {
+            const element = document.createElement("div");
+            const name = document.createElement("h4");
+            name.innerText = platter["name"];
+            const desc = document.createElement("p");
+            desc.innerText = platter["desc"];
+            const price = document.createElement("h4"); 
+            price.innerText = platter["price"];
+            const text = document.createElement("div");
+            text.classList.add("text");
+            text.append(name, desc);
+            element.append(text, price);
+            sectionC.append(element);
+        }
+        main.append(sectionC);
+    }
 
-    const sectionC = document.createElement("section");
-    const sectionCHeader = document.createElement("h3");
-    sectionCHeader.innerText = "Platters"
-    sectionC.append(sectionCHeader)
-    for (const platter of platters) {
-        const element = document.createElement("div");
-        const name = document.createElement("h4");
-        name.innerText = platter["name"];
-        const desc = document.createElement("p");
-        desc.innerText = platter["desc"];
-        const price = document.createElement("h4"); 
-        price.innerText = platter["price"];
-        element.append(name, desc, price);
-        sectionC.append(element);
+    if(option === "ALL" || option === "DESSERTS"){
+        const sectionD = document.createElement("section");
+        const sectionDHeader = document.createElement("h3");
+        sectionDHeader.innerText = "Desserts"
+        sectionD.append(sectionDHeader)
+        for (const dessert of desserts) {
+            const element = document.createElement("div");
+            const name = document.createElement("h4");
+            name.innerText = dessert["name"];
+            const desc = document.createElement("p");
+            desc.innerText = dessert["desc"];
+            const price = document.createElement("h4"); 
+            price.innerText = dessert["price"];
+            const text = document.createElement("div");
+            text.classList.add("text");
+            text.append(name, desc);
+            element.append(text, price);
+            sectionD.append(element);
+        }
+        main.append(sectionD);
     }
-    main.append(sectionC);
-
-    const sectionD = document.createElement("section");
-    const sectionDHeader = document.createElement("h3");
-    sectionDHeader.innerText = "Desserts"
-    sectionD.append(sectionDHeader)
-    for (const dessert of desserts) {
-        const element = document.createElement("div");
-        const name = document.createElement("h4");
-        name.innerText = dessert["name"];
-        const desc = document.createElement("p");
-        desc.innerText = dessert["desc"];
-        const price = document.createElement("h4"); 
-        price.innerText = dessert["price"];
-        element.append(name, desc, price);
-        sectionD.append(element);
+    
+    if(option === "ALL" || option === "BEVERAGES"){
+        const sectionE = document.createElement("section");
+        const sectionEHeader = document.createElement("h3");
+        sectionEHeader.innerText = "Beverages"
+        sectionE.append(sectionEHeader)
+        for (const beverage of beverages) {
+            const element = document.createElement("div");
+            const name = document.createElement("h4");
+            name.innerText = beverage["name"];
+            const desc = document.createElement("p");
+            desc.innerText = beverage["desc"];
+            const price = document.createElement("h4"); 
+            price.innerText = beverage["price"];
+            const text = document.createElement("div");
+            text.classList.add("text");
+            text.append(name, desc);
+            element.append(text, price);
+            sectionE.append(element);
+        }
+        main.append(sectionE);
     }
-    main.append(sectionD);
-
-    const sectionE = document.createElement("section");
-    const sectionEHeader = document.createElement("h3");
-    sectionEHeader.innerText = "Beverages"
-    sectionE.append(sectionEHeader)
-    for (const beverage of beverages) {
-        const element = document.createElement("div");
-        const name = document.createElement("h4");
-        name.innerText = beverage["name"];
-        const desc = document.createElement("p");
-        desc.innerText = beverage["desc"];
-        const price = document.createElement("h4"); 
-        price.innerText = beverage["price"];
-        element.append(name, desc, price);
-        sectionE.append(element);
-    }
-    main.append(sectionE);
+    
 
     
     container.append(sidebar, main);
